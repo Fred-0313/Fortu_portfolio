@@ -1,0 +1,2639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bignon Fortuné Fred — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+
+:root {
+  --bg:         #080614;
+  --bg2:        #110923;
+  --violet:     #7c3aed;
+  --violet-l:   #a855f7;
+  --magenta:    #c026d3;
+  --soft:       #c4b5fd;
+  --muted:      #6b5f8a;
+  --white:      #ffffff;
+  --font-title: 'Cormorant Garamond', Georgia, serif;
+  --font-body:  'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 50px;
+  padding: 10px 20px;
+  width: calc(100% - 32px);
+  max-width: 900px;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.60);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+
+.nav-cta {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--violet), var(--magenta));
+  padding: 8px 18px;
+  border-radius: 30px;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO SECTION ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 5vw 60px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 72% 38%, rgba(124,58,237,0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 45% at 18% 75%, rgba(45,27,105,0.35) 0%, transparent 60%),
+    linear-gradient(155deg, var(--bg) 0%, #160a2e 55%, #080614 100%);
+  z-index: 0;
+}
+
+.dots-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(124,58,237,0.15) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(ellipse 75% 75% at 72% 38%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 72% 38%, black 20%, transparent 100%);
+  opacity: 0.55;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-1 {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(192,38,211,0.12) 0%, transparent 70%);
+  top: -40px; right: 4%;
+  animation: floatY 8s ease-in-out infinite;
+}
+.blob-2 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(124,58,237,0.16) 0%, transparent 70%);
+  bottom: 8%; right: 28%;
+  animation: floatY 10s ease-in-out infinite reverse;
+}
+
+/* ── HERO GRID ── */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: center;
+}
+
+/* LEFT */
+.hero-left {
+  animation: slideLeft 0.85s 0.1s ease both;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.30);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  color: var(--soft);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--violet-l);
+  border-radius: 50%;
+  animation: pulse 2.2s infinite;
+}
+
+/* Title — Cormorant large, elegant */
+.hero-title {
+  font-family: var(--font-title);
+  font-size: clamp(50px, 6vw, 88px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+
+.hero-title .accent {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--violet-l) 0%, var(--magenta) 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-roles {
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1.2vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sep {
+  width: 3px; height: 3px;
+  background: var(--magenta);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-desc {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.15vw, 16px);
+  font-weight: 300;
+  line-height: 1.80;
+  color: rgba(255,255,255,0.50);
+  max-width: 460px;
+  margin-bottom: 40px;
+}
+
+.hero-desc em {
+  font-style: italic;
+  color: var(--soft);
+  font-weight: 400;
+}
+
+/* BUTTONS */
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: linear-gradient(135deg, var(--violet) 0%, var(--magenta) 100%);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: transform 0.22s, box-shadow 0.22s;
+  box-shadow: 0 4px 28px rgba(124,58,237,0.30);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(124,58,237,0.45);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid rgba(124,58,237,0.35);
+  transition: color 0.2s, border-color 0.2s;
+  letter-spacing: 0.01em;
+}
+.btn-secondary:hover { color: #fff; border-color: var(--violet-l); }
+
+/* STATS */
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  flex-wrap: wrap;
+}
+
+.stat-num {
+  font-family: var(--font-title);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* RIGHT — Photo */
+.hero-right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slideRight 0.85s 0.25s ease both;
+}
+
+.photo-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3/4;
+}
+
+.photo-shape {
+  width: 100%;
+  height: 100%;
+  border-radius: 52% 48% 54% 46% / 46% 54% 46% 54%;
+  overflow: hidden;
+  background: linear-gradient(160deg, #1a0b35, #0d0720);
+  border: 1px solid rgba(124,58,237,0.18);
+  box-shadow:
+    0 0 50px rgba(124,58,237,0.22),
+    0 0 100px rgba(192,38,211,0.10);
+}
+
+.photo-shape img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.92;
+  filter: saturate(0.88);
+  display: block;
+}
+
+/* Chips */
+.chip {
+  position: absolute;
+  background: rgba(10,5,24,0.80);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(124,58,237,0.28);
+  border-radius: 10px;
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--soft);
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+}
+
+.chip-icon {
+  width: 20px; height: 20px;
+  background: linear-gradient(135deg, var(--violet), var(--magenta));
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+/* Professional inline icons */
+.chip-icon svg,
+.icon-wrap svg,
+.info-icon svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chip-icon svg { width: 12px; height: 12px; color: #fff; }
+.icon-wrap svg { width: 24px; height: 24px; color: var(--soft); }
+.info-icon svg { width: 18px; height: 18px; color: var(--soft); }
+.card-icon svg { width: 21px; height: 21px; color: var(--soft); }
+
+.chip-1 { top: 10%; left: -68px; animation: floatChip 6s 0s ease-in-out infinite; }
+.chip-2 { top: 48%; right: -68px; animation: floatChip 6s 1.8s ease-in-out infinite; }
+.chip-3 { bottom: 12%; left: -48px; animation: floatChip 6s 3.4s ease-in-out infinite; }
+
+/* ── SHARED COMPONENTS ── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.30);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  color: var(--soft);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.label-line { width: 20px; height: 1px; background: var(--violet-l); }
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+.section-title .accent {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--violet-l) 0%, var(--magenta) 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.30), transparent);
+  margin: 0;
+}
+
+/* ════════════════════════════
+   SECTION ABOUT
+   ════════════════════════════ */
+#about {
+  padding: 100px 5vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 50%, rgba(124,58,237,0.15) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 85% 20%, rgba(192,38,211,0.10) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.about-inner {
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 72px;
+}
+
+.about-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(124,58,237,0.18);
+  border-radius: 20px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.about-card:hover { border-color: rgba(124,58,237,0.40); }
+
+.about-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--violet), var(--magenta));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.about-card:hover::before { opacity: 1; }
+
+.card-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(192,38,211,0.20));
+  border: 1px solid rgba(124,58,237,0.30);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-family: var(--font-title);
+  font-size: 22px; font-weight: 700;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.card-text {
+  font-size: 14px; line-height: 1.80;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+}
+.card-text em {
+  color: var(--soft);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.card-highlight {
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: rgba(124,58,237,0.08);
+  border-left: 2px solid var(--violet);
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  color: var(--soft);
+  font-style: italic;
+}
+
+/* ── SKILLS ── */
+.skills-section { margin-top: 0; }
+
+.skills-title {
+  font-family: var(--font-title);
+  font-size: 28px; font-weight: 700;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+.skills-title span {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--violet-l), var(--magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skills-grid { display: flex; flex-direction: column; gap: 24px; }
+
+.category-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.category-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 30px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.02em;
+  transition: all 0.2s; cursor: default;
+}
+.tag-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor; opacity: 0.7; flex-shrink: 0;
+}
+
+.tag-data {
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.25);
+  color: var(--soft);
+}
+.tag-data:hover { background: rgba(124,58,237,0.22); border-color: rgba(168,85,247,0.5); }
+
+.tag-dev {
+  background: rgba(192,38,211,0.12);
+  border: 1px solid rgba(192,38,211,0.25);
+  color: #e879f9;
+}
+.tag-dev:hover { background: rgba(192,38,211,0.22); border-color: rgba(232,121,249,0.5); }
+
+.tag-design {
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.25);
+  color: #a5b4fc;
+}
+.tag-design:hover { background: rgba(99,102,241,0.22); border-color: rgba(165,180,252,0.5); }
+
+.tag-video {
+  background: rgba(236,72,153,0.10);
+  border: 1px solid rgba(236,72,153,0.22);
+  color: #f9a8d4;
+}
+.tag-video:hover { background: rgba(236,72,153,0.18); border-color: rgba(249,168,212,0.5); }
+
+/* ════════════════════════════
+   SECTION SERVICES
+   ════════════════════════════ */
+#services {
+  padding: 100px 5vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.svc-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 80% 60%, rgba(124,58,237,0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 35% at 20% 20%, rgba(192,38,211,0.10) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.svc-inner {
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+}
+
+.section-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  max-width: 480px;
+  margin-bottom: 60px;
+  line-height: 1.8;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.svc-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(124,58,237,0.15);
+  border-radius: 24px;
+  padding: 36px 32px 28px;
+  position: relative;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s, border-color 0.3s, background 0.3s;
+  cursor: default;
+}
+.svc-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(124,58,237,0.40);
+  background: rgba(255,255,255,0.055);
+}
+
+.svc-card::after {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.sc-1::after { background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%); }
+.sc-2::after { background: radial-gradient(circle, rgba(192,38,211,0.16) 0%, transparent 70%); }
+.sc-3::after { background: radial-gradient(circle, rgba(99,102,241,0.16) 0%, transparent 70%); }
+.sc-4::after { background: radial-gradient(circle, rgba(236,72,153,0.14) 0%, transparent 70%); }
+.svc-card:hover::after { opacity: 1; }
+
+.card-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.icon-wrap {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.iw-1 { background: linear-gradient(135deg,rgba(124,58,237,0.30),rgba(168,85,247,0.20)); border:1px solid rgba(124,58,237,0.30); }
+.iw-2 { background: linear-gradient(135deg,rgba(192,38,211,0.28),rgba(232,121,249,0.18)); border:1px solid rgba(192,38,211,0.30); }
+.iw-3 { background: linear-gradient(135deg,rgba(99,102,241,0.28),rgba(165,180,252,0.18)); border:1px solid rgba(99,102,241,0.30); }
+.iw-4 { background: linear-gradient(135deg,rgba(236,72,153,0.24),rgba(249,168,212,0.16)); border:1px solid rgba(236,72,153,0.28); }
+
+.card-num {
+  font-family: var(--font-title);
+  font-size: 48px; font-weight: 700;
+  color: rgba(255,255,255,0.05);
+  line-height: 1; letter-spacing: -2px;
+}
+
+.svc-title {
+  font-family: var(--font-title);
+  font-size: 24px; font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.svc-desc {
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.80; flex: 1;
+  margin-bottom: 20px;
+}
+.svc-desc em { color: var(--soft); font-style: normal; font-weight: 500; }
+
+.svc-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 24px;
+}
+.stag {
+  font-size: 11px; font-weight: 500;
+  padding: 4px 10px; border-radius: 20px;
+  color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.card-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  color: var(--white); text-decoration: none;
+  background: linear-gradient(135deg, var(--violet), var(--magenta));
+  padding: 10px 20px; border-radius: 30px;
+  border: none; cursor: pointer;
+  width: fit-content;
+  transition: opacity 0.2s, transform 0.2s;
+  letter-spacing: 0.02em;
+}
+.card-btn:hover { opacity: 0.85; transform: translateX(2px); }
+.btn-arrow { font-size: 12px; transition: transform 0.2s; display: inline-block; }
+.card-btn:hover .btn-arrow { transform: translateX(3px); }
+
+
+/* ══════════════════════════
+   SECTION PORTFOLIO
+   ══════════════════════════ */
+#portfolio {
+  padding: 100px 5vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.port-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 85% 30%, rgba(124,58,237,0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 40% at 10% 70%, rgba(192,38,211,0.10) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.port-inner {
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+}
+
+/* ── Header ── */
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.30);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.10em; color: var(--soft);
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.label-line { width: 20px; height: 1px; background: var(--violet-l); }
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 700; line-height: 1.05;
+  margin-bottom: 16px; color: var(--white);
+}
+.section-title .accent {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--violet-l) 0%, var(--magenta) 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  max-width: 480px; margin-bottom: 48px; line-height: 1.8;
+}
+
+/* ── Filtres ── */
+.filters {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.filter-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 20px; border-radius: 30px;
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.25s;
+  border: 1px solid rgba(124,58,237,0.25);
+  background: rgba(124,58,237,0.07);
+  color: rgba(255,255,255,0.60);
+  user-select: none;
+}
+.filter-btn:hover {
+  border-color: rgba(168,85,247,0.50);
+  color: var(--white);
+  background: rgba(124,58,237,0.15);
+}
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--violet), var(--magenta));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.35);
+}
+
+.filter-count {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 11px;
+}
+.filter-btn.active .filter-count {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ── Grille ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Carte projet ── */
+.project-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(124,58,237,0.15);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, background 0.3s;
+  cursor: default;
+  display: flex; flex-direction: column;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124,58,237,0.40);
+  background: rgba(255,255,255,0.055);
+}
+
+
+
+.img-slider {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+
+/* Image placeholder */
+
+
+/* Remplace ce bloc par une vraie image : <img src="ton-image.jpg" ...> */
+.card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+.img-placeholder {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+}
+.img-placeholder .icon {
+  width: 56px; height: 40px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  position: relative;
+  opacity: 0.52;
+  background: linear-gradient(135deg, rgba(124,58,237,0.14), rgba(192,38,211,0.08));
+}
+.img-placeholder .icon::before {
+  content: '';
+  position: absolute;
+  left: 9px; right: 9px; bottom: 9px;
+  height: 11px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, rgba(196,181,253,0.28), rgba(232,121,249,0.20));
+  clip-path: polygon(0 100%, 28% 40%, 45% 72%, 65% 18%, 100% 100%);
+}
+.img-placeholder .icon::after {
+  content: '';
+  position: absolute;
+  top: 9px; right: 11px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(196,181,253,0.45);
+}
+.img-placeholder span {
+  font-size: 11px; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+}
+
+/* Overlay hover sur l'image */
+.card-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(192,38,211,0.10));
+  opacity: 0; transition: opacity 0.3s;
+}
+.project-card:hover .card-img::after { opacity: 1; }
+
+/* Badge catégorie */
+.cat-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+}
+.badge-data {
+  background: rgba(168,85,247,0.18);
+  border: 1px solid rgba(168,85,247,0.35);
+  color: #c4b5fd;
+}
+.badge-web {
+  background: rgba(192,38,211,0.18);
+  border: 1px solid rgba(192,38,211,0.35);
+  color: #e879f9;
+}
+.badge-design {
+  background: rgba(99,102,241,0.18);
+  border: 1px solid rgba(99,102,241,0.35);
+  color: #a5b4fc;
+}
+.badge-video {
+  background: rgba(236,72,153,0.16);
+  border: 1px solid rgba(236,72,153,0.30);
+  color: #f9a8d4;
+}
+
+/* Contenu texte */
+.card-body {
+  padding: 22px 22px 20px;
+  display: flex; flex-direction: column;
+  flex: 1;
+}
+
+.card-title {
+  font-family: var(--font-title);
+  font-size: 19px; font-weight: 700;
+  color: var(--white); margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.card-desc {
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.75; flex: 1;
+  margin-bottom: 18px;
+}
+.card-desc em {
+  color: var(--soft); font-style: normal; font-weight: 400;
+}
+
+/* Tags techno */
+.card-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 18px;
+}
+.ctag {
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 20px;
+  color: rgba(255,255,255,0.50);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Bouton */
+.card-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600;
+  color: var(--soft); text-decoration: none;
+  border: 1px solid rgba(168,85,247,0.30);
+  border-radius: 20px; padding: 7px 16px;
+  background: rgba(168,85,247,0.08);
+  width: fit-content;
+  transition: all 0.2s;
+}
+.card-cta:hover {
+  background: rgba(168,85,247,0.18);
+  border-color: rgba(168,85,247,0.55);
+  color: #fff;
+}
+.cta-arrow { transition: transform 0.2s; }
+.card-cta:hover .cta-arrow { transform: translateX(3px); }
+
+/* Message vide */
+.empty-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+  font-size: 14px;
+  display: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  #portfolio { padding: 80px 20px; }
+  .projects-grid { grid-template-columns: 1fr; gap: 16px; }
+  .filters { gap: 8px; }
+  .filter-btn { padding: 7px 14px; font-size: 12px; }
+}
+
+/* Animation d'apparition */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.project-card {
+  animation: fadeUp 0.5s ease both;
+}
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .about-grid,
+  .cards-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  #about, #services { padding: 80px 20px; }
+  .about-grid { gap: 24px; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes slideLeft {
+  from { opacity:0; transform:translateX(-36px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes slideRight {
+  from { opacity:0; transform:translateX(36px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes floatY {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(-18px); }
+}
+@keyframes floatChip {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(-7px); }
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.4; transform:scale(0.65); }
+}
+
+/* ════════════════════════════
+   RESPONSIVE — MOBILE FIRST
+   ════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 960px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  .hero-left { order: 2; }
+  .hero-right { order: 1; }
+
+  .hero-roles { justify-content: center; }
+  .hero-desc  { max-width: 100%; margin-left:auto; margin-right:auto; }
+  .hero-ctas  { justify-content: center; }
+  .hero-stats { justify-content: center; }
+
+  .photo-wrap { max-width: 260px; }
+
+  .chip-1, .chip-2, .chip-3 { display: none; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  nav {
+    top: 12px;
+    padding: 9px 16px;
+    width: calc(100% - 24px);
+  }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 18px; }
+
+  #hero {
+    padding: 90px 20px 50px;
+    min-height: 100svh;
+  }
+
+  .hero-inner {
+    gap: 32px;
+  }
+
+  .hero-badge {
+    font-size: 10px;
+    padding: 5px 12px;
+    margin-bottom: 18px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+
+  .hero-roles {
+    font-size: 11px;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    line-height: 1.70;
+    margin-bottom: 28px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .btn-primary {
+    font-size: 13px;
+    padding: 12px 24px;
+  }
+  .btn-secondary {
+    font-size: 13px;
+  }
+
+  .hero-stats {
+    margin-top: 32px;
+    padding-top: 22px;
+    gap: 28px;
+  }
+  .stat-num { font-size: 28px; }
+  .stat-label { font-size: 10px; }
+
+  .photo-wrap { max-width: 220px; }
+}
+
+/* Very small */
+@media (max-width: 380px) {
+  .hero-title { font-size: 38px; }
+  .hero-ctas { flex-direction: column; align-items: center; gap: 10px; }
+}
+
+
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.30), transparent);
+}
+
+/* ══════════════════════════════
+   SECTION CONTACT
+   ══════════════════════════════ */
+#contact {
+  padding: 100px 5vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 20% 50%, rgba(124,58,237,0.16) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 80% 20%, rgba(192,38,211,0.11) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 60% 80%, rgba(124,58,237,0.08) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.contact-inner {
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+}
+
+/* ── Labels & Titres ── */
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.30);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.10em; color: var(--soft);
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.label-line { width: 20px; height: 1px; background: var(--violet-l); }
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 700; line-height: 1.05;
+  margin-bottom: 16px;
+}
+.section-title .accent {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--violet-l) 0%, var(--magenta) 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  max-width: 460px; margin-bottom: 60px;
+  line-height: 1.8;
+}
+
+/* ── Layout contact ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── Colonne gauche — infos ── */
+.contact-info { display: flex; flex-direction: column; gap: 28px; }
+
+.info-card {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(124,58,237,0.15);
+  border-radius: 16px; padding: 20px 22px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.info-card:hover {
+  border-color: rgba(124,58,237,0.38);
+  background: rgba(255,255,255,0.05);
+}
+
+.info-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(192,38,211,0.18));
+  border: 1px solid rgba(124,58,237,0.28);
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+.info-content { display: flex; flex-direction: column; gap: 3px; }
+
+.info-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+.info-value {
+  font-size: 14px; font-weight: 400;
+  color: rgba(255,255,255,0.80);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.info-value:hover { color: var(--soft); }
+
+.info-value.multi { display: flex; flex-direction: column; gap: 2px; }
+
+/* Disponibilité badge */
+.availability {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(124,58,237,0.10);
+  border: 1px solid rgba(124,58,237,0.28);
+  border-radius: 20px; padding: 10px 18px;
+  font-size: 13px; font-weight: 500;
+  color: var(--soft);
+  margin-top: 4px;
+}
+.avail-dot {
+  width: 7px; height: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse-green 2s infinite;
+}
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.6); }
+}
+
+/* ── Colonne droite — formulaire ── */
+.contact-form-wrap {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(124,58,237,0.18);
+  border-radius: 24px;
+  padding: 36px 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form-wrap::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--violet), var(--magenta));
+}
+
+.form-title {
+  font-family: var(--font-title);
+  font-size: 24px; font-weight: 700;
+  color: var(--white); margin-bottom: 6px;
+}
+.form-subtitle {
+  font-size: 13px; color: rgba(255,255,255,0.40);
+  margin-bottom: 28px;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+
+/* Ligne double */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+
+.form-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(124,58,237,0.20);
+  border-radius: 10px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 300;
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.25s, background 0.25s;
+  width: 100%;
+}
+.form-input::placeholder,
+.form-textarea::placeholder { color: rgba(255,255,255,0.25); }
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: rgba(168,85,247,0.55);
+  background: rgba(168,85,247,0.07);
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b5f8a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-select option { background: #160a2e; color: var(--white); }
+
+.form-textarea { resize: vertical; min-height: 120px; }
+
+/* Bouton submit */
+.btn-submit {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(135deg, var(--violet) 0%, var(--magenta) 100%);
+  color: #fff; border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  padding: 14px 32px; border-radius: 50px;
+  width: 100%; letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 28px rgba(124,58,237,0.30);
+  margin-top: 4px;
+}
+.btn-submit:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(124,58,237,0.45);
+}
+.btn-submit:active { transform: translateY(0); }
+.btn-arrow { font-size: 16px; transition: transform 0.2s; }
+.btn-submit:hover .btn-arrow { transform: translateX(4px); }
+
+/* Message succès */
+.success-msg {
+  display: none;
+  background: rgba(74,222,128,0.08);
+  border: 1px solid rgba(74,222,128,0.25);
+  border-radius: 10px; padding: 14px 18px;
+  font-size: 13px; color: #4ade80;
+  text-align: center; margin-top: 4px;
+}
+
+
+.error-msg {
+  display: none;
+  background: rgba(248,113,113,0.08);
+  border: 1px solid rgba(248,113,113,0.25);
+  border-radius: 10px; padding: 14px 18px;
+  font-size: 13px; color: #f87171;
+  text-align: center; margin-top: 4px;
+}/* ══════════════════════════════
+   FOOTER
+   ══════════════════════════════ */
+footer {
+  padding: 48px 5vw 32px;
+  border-top: 1px solid rgba(124,58,237,0.12);
+  position: relative;
+}
+
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 32px;
+}
+
+.footer-top {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 24px;
+}
+
+.footer-logo {
+  font-family: var(--font-title);
+  font-size: 28px; font-weight: 700;
+  color: var(--white); text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.footer-tagline {
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+
+/* Nav footer */
+.footer-nav {
+  display: flex; gap: 28px; list-style: none; flex-wrap: wrap;
+}
+.footer-nav a {
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.50);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--soft); }
+
+/* Réseaux sociaux */
+.social-links {
+  display: flex; gap: 12px;
+}
+
+.social-link {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(124,58,237,0.20);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; text-decoration: none;
+  transition: all 0.25s;
+  color: rgba(255,255,255,0.55);
+}
+.social-link:hover {
+  background: rgba(124,58,237,0.20);
+  border-color: rgba(168,85,247,0.45);
+  color: var(--soft);
+  transform: translateY(-2px);
+}
+
+/* Divider footer */
+.footer-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Footer bottom */
+.footer-bottom {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+
+.footer-copy {
+  font-size: 12px; color: rgba(255,255,255,0.28);
+}
+.footer-copy span {
+  color: var(--violet-l);
+}
+
+.footer-made {
+  font-size: 12px; color: rgba(255,255,255,0.25);
+  display: flex; align-items: center; gap: 5px;
+}
+.heart { color: #e879f9; animation: heartbeat 1.8s ease infinite; }
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.2); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 640px) {
+  #contact { padding: 80px 20px; }
+  .contact-form-wrap { padding: 24px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { flex-direction: column; align-items: flex-start; }
+  footer { padding: 40px 20px 28px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <a href="#" class="nav-logo">BFF.</a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="dots-grid"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="hero-inner">
+
+    <!-- LEFT — Text -->
+    <div class="hero-left">
+
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for Freelance
+      </div>
+
+      <h1 class="hero-title">
+        Data. Design.<br>
+        <span class="accent">Digital.</span>
+      </h1>
+
+      <div class="hero-roles">
+        <span>Analyst</span>
+        <span class="sep"></span>
+        <span>Developer</span>
+        <span class="sep"></span>
+        <span>Creative</span>
+      </div>
+
+      <p class="hero-desc">
+        Je transforme les données en <em>insights</em>,les idées en interfaces, et visions dans la réalité — combinant la rigueur statistique avec un design créatif et un développement web moderne.
+      </p>
+      <div class="hero-ctas">
+        <a href="#portfolio" class="btn-primary">
+          Voir mon travail
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7H11.5M11.5 7L8 3.5M11.5 7L8 10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#contact" class="btn-secondary">Contact Me &rarr;</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Domains</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Languages</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT — Photo -->
+    <div class="hero-right">
+      <div class="photo-wrap">
+        <div class="photo-shape">
+          <img src="C:\Users\fortu\Fortu_portfolio\img\1774813254372~2.png" alt="Photo de profil">
+
+        <div class="chip chip-1">
+          <div class="chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-7"/><path d="M18 7h1v1"/></svg></div>
+          Data Analyst
+        </div>
+        <div class="chip chip-2">
+          <div class="chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/><path d="M14 4l-4 16"/></svg></div>
+          Web Dev
+        </div>
+        <div class="chip chip-3">
+          <div class="chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 5.9 2 10.7 2 14.2 4.8 17 8.2 17h1.4c.8 0 1.4.6 1.4 1.4 0 .9.7 1.6 1.6 1.6H14c4.4 0 8-3.6 8-8 0-5.5-4.5-10-10-10z"/></svg></div>
+          Designer
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SECTION ABOUT
+     ══════════════════════════ -->
+<section id="about">
+  <div class="about-bg"></div>
+  <div class="about-inner">
+
+    <div class="section-label">
+      <span class="label-line"></span>
+      About Me
+    </div>
+
+    <h2 class="section-title">
+      Qui suis-je &amp;<br>
+      <span class="accent">Ce en quoi je crois</span>
+    </h2>
+
+    <div class="about-grid">
+
+      <div class="about-card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8l-2.1 6.3-6.3 2.1 2.1-6.3 6.3-2.1z"/></svg></div>
+        <div class="card-title">Mon Histoire</div>
+        <p class="card-text">
+          Étudiant en <em>Licence en ESA</em> ( Econométrie et Statistique Appliquée),
+          je suis passionné par l'intersection entre la <em>donnée</em>, le <em>design</em>
+          et le <em>code</em>. Cette triple compétence me permet d'aborder chaque projet
+          avec une vision complète — de l'analyse brute jusqu'au produit fini.
+          <br><br>
+          Autodidacte dans l'âme, j'ai construit mes compétences en développement web,
+          graphisme et montage vidéo en dehors des cours, poussé par une curiosité
+          insatiable pour créer des choses <em>utiles et belles</em>.
+        </p>
+        <div class="card-highlight">
+          « Transformer la complexité en clarté, les données en décisions. »
+        </div>
+      </div>
+
+      <div class="about-card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V17h6v-.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg></div>
+        <div class="card-title">Ma Philosophie</div>
+        <p class="card-text">
+          Je crois que le <em>meilleur travail naît à la croisée des disciplines</em>.
+          Un bon analyste doit comprendre le design pour communiquer ses insights.
+          Un bon développeur doit penser données pour construire des outils pertinents.
+          <br><br>
+          Je m'impose toujours trois critères : que ce soit <em>rigoureux</em> dans le fond,
+          <em>élégant</em> dans la forme, et <em>impactant</em> pour l'utilisateur final.
+          Chaque projet est une opportunité d'apprendre quelque chose de nouveau et
+          de livrer quelque chose dont je suis fier.
+        </p>
+        <div class="card-highlight">
+          « Rigueur, élégance, impact — dans cet ordre. »
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider" style="margin-bottom:48px;"></div>
+
+    <div class="skills-section">
+      <h3 class="skills-title">Mes <span>Compétences</span></h3>
+      <div class="skills-grid">
+
+        <div class="skill-category">
+          <div class="category-label">Analyse de données &amp; BI</div>
+          <div class="tags">
+            <span class="tag tag-data"><span class="tag-dot"></span>Python</span>
+            <span class="tag tag-data"><span class="tag-dot"></span>R</span>
+            <span class="tag tag-data"><span class="tag-dot"></span>SQL</span>
+            <span class="tag tag-data"><span class="tag-dot"></span>Power BI</span>
+            <span class="tag tag-data"><span class="tag-dot"></span>Excel / VBA</span>
+            <span class="tag tag-data"><span class="tag-dot"></span>Statistiques</span>
+            <span class="tag tag-data"><span class="tag-dot"></span>Data Viz</span>
+            <span class="tag tag-data"><span class="tag-dot"></span>Machine Learning</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="category-label">Développement Web</div>
+          <div class="tags">
+            <span class="tag tag-dev"><span class="tag-dot"></span>HTML / CSS</span>
+            <span class="tag tag-dev"><span class="tag-dot"></span>JavaScript</span>
+            <span class="tag tag-dev"><span class="tag-dot"></span>React</span>
+            <span class="tag tag-dev"><span class="tag-dot"></span>PHP</span>
+            <span class="tag tag-dev"><span class="tag-dot"></span>MySQL</span>
+            <span class="tag tag-dev"><span class="tag-dot"></span>WordPress</span>
+            <span class="tag tag-dev"><span class="tag-dot"></span>UI / UX Design</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="category-label">Graphisme &amp; Design</div>
+          <div class="tags">
+            <span class="tag tag-design"><span class="tag-dot"></span>Canva</span>
+            <span class="tag tag-design"><span class="tag-dot"></span>Figma</span>
+            <span class="tag tag-design"><span class="tag-dot"></span>Photoshop</span>
+            <span class="tag tag-design"><span class="tag-dot"></span>Illustrator</span>
+            <span class="tag tag-design"><span class="tag-dot"></span>Affiches &amp; Flyers</span>
+            <span class="tag tag-design"><span class="tag-dot"></span>Identité visuelle</span>
+            <span class="tag tag-design"><span class="tag-dot"></span>Maquettage</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="category-label">Vidéo &amp; Contenu</div>
+          <div class="tags">
+            <span class="tag tag-video"><span class="tag-dot"></span>CapCut</span>
+            <span class="tag tag-video"><span class="tag-dot"></span>Montage vidéo</span>
+            <span class="tag tag-video"><span class="tag-dot"></span>Storytelling</span>
+            <span class="tag tag-video"><span class="tag-dot"></span>Réseaux sociaux</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════
+     SECTION SERVICES
+     ══════════════════════════ -->
+<section id="services">
+  <div class="svc-bg"></div>
+  <div class="svc-inner">
+
+    <div class="section-label">
+      <span class="label-line"></span>
+      Services
+    </div>
+
+    <h2 class="section-title">
+      Ce que je peux<br>
+      <span class="accent">faire pour vous</span>
+    </h2>
+    <p class="section-sub">
+      De l'analyse à la communication visuelle, je propose des prestations
+      complètes pensées pour répondre à vos besoins concrets.
+    </p>
+
+    <div class="cards-grid">
+
+      <div class="svc-card sc-1">
+        <div class="card-top">
+          <div class="icon-wrap iw-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-7"/><path d="M18 7h1v1"/></svg></div>
+          <span class="card-num">01</span>
+        </div>
+        <div class="svc-title">Analyse de Données &amp; BI</div>
+        <p class="svc-desc">
+          Collecte, nettoyage et analyse de vos données pour en extraire des
+          <em>insights actionnables</em>. Création de dashboards interactifs
+          et de rapports clairs pour faciliter la <em>prise de décision</em>.
+        </p>
+        <div class="svc-tags">
+          <span class="stag">Python</span>
+          <span class="stag">Power BI</span>
+          <span class="stag">SQL</span>
+          <span class="stag">Excel</span>
+          <span class="stag">R</span>
+        </div>
+        <a href="#contact" class="card-btn">
+          Me contacter <span class="btn-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="svc-card sc-2">
+        <div class="card-top">
+          <div class="icon-wrap iw-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/><path d="M14 4l-4 16"/></svg></div>
+          <span class="card-num">02</span>
+        </div>
+        <div class="svc-title">Développement Web</div>
+        <p class="svc-desc">
+          Conception et développement de <em>sites web modernes</em> et
+          responsives. De la landing page au site complet, avec une attention
+          particulière portée à l'<em>expérience utilisateur</em> et aux performances.
+        </p>
+        <div class="svc-tags">
+          <span class="stag">HTML/CSS</span>
+          <span class="stag">JavaScript</span>
+          <span class="stag">React</span>
+          <span class="stag">PHP</span>
+          <span class="stag">WordPress</span>
+        </div>
+        <a href="#contact" class="card-btn">
+          Me contacter <span class="btn-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="svc-card sc-3">
+        <div class="card-top">
+          <div class="icon-wrap iw-3"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 5.9 2 10.7 2 14.2 4.8 17 8.2 17h1.4c.8 0 1.4.6 1.4 1.4 0 .9.7 1.6 1.6 1.6H14c4.4 0 8-3.6 8-8 0-5.5-4.5-10-10-10z"/></svg></div>
+          <span class="card-num">03</span>
+        </div>
+        <div class="svc-title">Design Graphique</div>
+        <p class="svc-desc">
+          Création d'<em>affiches, flyers, logos</em> et identités visuelles
+          percutantes. Maquettes UI/UX pour vos applications et sites. Un design
+          qui <em>communique, convainc et marque les esprits</em>.
+        </p>
+        <div class="svc-tags">
+          <span class="stag">Canva</span>
+          <span class="stag">Figma</span>
+          <span class="stag">Photoshop</span>
+          <span class="stag">Illustrator</span>
+        </div>
+        <a href="#contact" class="card-btn">
+          Me contacter <span class="btn-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="svc-card sc-4">
+        <div class="card-top">
+          <div class="icon-wrap iw-4"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M17 9l4-2v10l-4-2z"/></svg></div>
+          <span class="card-num">04</span>
+        </div>
+        <div class="svc-title">Montage Vidéo</div>
+        <p class="svc-desc">
+          Montage et editing de vidéos pour les <em>réseaux sociaux, événements
+          ou présentations</em>. Reels, courts-métrages, contenus marketing —
+          des vidéos qui <em>captivent et racontent une histoire</em>.
+        </p>
+        <div class="svc-tags">
+          <span class="stag">CapCut</span>
+          <span class="stag">Reels / TikTok</span>
+          <span class="stag">Storytelling</span>
+          <span class="stag">Motion</span>
+        </div>
+        <a href="#contact" class="card-btn">
+          Me contacter <span class="btn-arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SECTION PORTFOLIO
+     ══════════════════════════ -->
+<section id="portfolio">
+  <div class="port-bg"></div>
+  <div class="port-inner">
+
+    <div class="section-label">
+      <span class="label-line"></span>
+      Portfolio
+    </div>
+
+    <h2 class="section-title">
+      Mes<br>
+      <span class="accent">Réalisations</span>
+    </h2>
+    <p class="section-sub">
+      Une sélection de projets en data, développement web, design graphique
+      et montage vidéo — chacun reflétant une vraie problématique résolue.
+    </p>
+
+    <!-- FILTRES -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">
+        Tous <span class="filter-count">16</span>
+      </button>
+      <button class="filter-btn" data-filter="data">
+        Data & BI <span class="filter-count">2</span>
+      </button>
+      <button class="filter-btn" data-filter="web">
+        Web <span class="filter-count">3</span>
+      </button>
+      <button class="filter-btn" data-filter="design">
+        Design <span class="filter-count">8</span>
+      </button>
+      <button class="filter-btn" data-filter="video">
+        Vidéo <span class="filter-count">3</span>
+      </button>
+    </div>
+
+    <!-- GRILLE PROJETS -->
+    <div class="projects-grid" id="projectsGrid">
+
+      <!-- ═══════════ DATA & BI ═══════════ -->
+
+      <div class="project-card" data-cat="data">
+        <div class="card-img">
+          <!--
+            REMPLACE ICI avec ton image :
+            <img src="images/dashboard-powerbi.jpg" alt="Dashboard Power BI" />
+          -->
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\power.png" alt="Dashboard Power BI - Commerce" />
+                <span class="cat-badge badge-data">Data & BI</span>
+          </div>
+          <span class="cat-badge badge-data">Data & BI</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Dashboard Power BI — Commerce</div>
+          <p class="card-desc">
+            Tableau de bord analytique pour un petit commerce sur <em>28 jours de données</em>.
+            Identification des produits les plus rentables, analyse des tendances de ventes
+            et transformation des données brutes en décisions stratégiques actionnables.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Power BI</span>
+            <span class="ctag">Excel</span>
+            <span class="ctag">DAX</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="data">
+        <div class="card-img">
+          <!--
+            REMPLACE ICI :
+            <img src="images/dashboard-python.jpg" alt="Dashboard Python Streamlit" />
+          -->
+          <div class="img-slider">
+  <div class="slides">
+    <img src="C:\Users\fortu\Fortu_portfolio\img\dashdo1.png" alt="Projet 1">
+    <img src="C:\Users\fortu\Fortu_portfolio\img\dash2.png" alt="Projet 2">
+    <img src="C:\Users\fortu\Fortu_portfolio\img\dash3.png" alt="Projet 3">
+  </div>
+</div>
+          <span class="cat-badge badge-data">Data & BI</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Dashboard Python — Data Mobile Bénin</div>
+          <p class="card-desc">
+            Prévision de la demande en <em>data mobile au Bénin (2025–2030)</em> via modèles
+            de séries temporelles ARIMA, Prophet et régression exponentielle.
+            Dashboard interactif déployé avec <em>Streamlit</em> pour MTN, Moov Africa et Celtiis.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Python</span>
+            <span class="ctag">Streamlit</span>
+            <span class="ctag">ARIMA</span>
+            <span class="ctag">Prophet</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ═══════════ WEB ═══════════ -->
+
+      <div class="project-card" data-cat="web">
+        
+          <!--
+            REMPLACE ICI :
+            <img src="images/site-vitrine.jpg" alt="Site vitrine" />
+          -->
+            <div class="card-img">
+                <img src="C:\Users\fortu\Fortu_portfolio\img\boutique enio.png" alt="Dashboard Power BI - Commerce" />
+          
+</div>
+          <span class="cat-badge badge-web">Web</span>
+        
+        <div class="card-body">
+          <div class="card-title">Site Vitrine </div>
+          <p class="card-desc">
+            Conception et développement d'un <em>site vitrine professionnel</em>.
+            Design responsive, optimisé pour la conversion et adapté à l'identité
+            visuelle du client.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">HTML/CSS</span>
+            <span class="ctag">JavaScript</span>
+            <span class="ctag">Responsive</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="web">
+        <div class="card-img">
+          <!--
+            REMPLACE ICI :
+            <img src="images/site-ecommerce.jpg" alt="Site e-commerce" />
+          -->
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\eniola store.png" alt="Dashboard Power BI - Commerce" />
+          </div>
+          <span class="cat-badge badge-web">Web</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">E-commerce — Eniola Store</div>
+          <p class="card-desc">
+            Boutique en ligne complète avec <em>catalogue produits, panier
+            et gestion des commandes</em>. Interface intuitive pensée pour
+            maximiser l'expérience d'achat.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">PHP</span>
+            <span class="ctag">MySQL</span>
+            <span class="ctag">JavaScript</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="web">
+        <div class="card-img">
+          <!--
+            REMPLACE ICI :
+            <img src="images/portfolio-web.jpg" alt="Portfolio web" />
+          -->
+        <div class="img-slider">
+            <div class="slides">
+                <img src="C:\Users\fortu\Fortu_portfolio\img\casim et fils.png" alt="Projet 1">
+                <img src="C:\Users\fortu\Fortu_portfolio\img\divan casim et fils.png" alt="Projet 2">
+    
+            </div>
+
+        </div>
+          <span class="cat-badge badge-web">Web</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Portfolio </div>
+          <p class="card-desc">
+            Portfolio personnel conçu pour mettre en valeur les compétences
+            et projets d'un professionnel. <em>Design moderne et animations
+            soignées</em> pour une première impression mémorable.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">HTML/CSS</span>
+            <span class="ctag">JavaScript</span>
+            <span class="ctag">UI/UX</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ═══════════ DESIGN (8 projets) ═══════════ -->
+
+      <div class="project-card" data-cat="design">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\logo.png" alt="Dashboard Power BI - Commerce" />
+          </div>
+          <span class="cat-badge badge-design">Design</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Logo </div>
+          <p class="card-desc">
+            Création d'une <em>identité visuelle complète</em> : logotype,
+            palette de couleurs et typographie. Un logo qui reflète les valeurs
+            et la personnalité de la marque.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Illustrator</span>
+            <span class="ctag">Identité visuelle</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="design">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\Affiche 2 corret.jpg" alt="Dashboard Power BI - Commerce" />
+          </div>
+          <span class="cat-badge badge-design">Design</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Affiche Publicitaire </div>
+          <p class="card-desc">
+            Conception d'une <em>affiche publicitaire percutante</em> pour
+            un événement ou une campagne. Mise en page dynamique, typographie
+            impactante et visuels marquants.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Canva</span>
+            <span class="ctag">Photoshop</span>
+            <span class="ctag">Print</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="design">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\1234.jpeg" alt="Dashboard Power BI - Commerce" />
+          </div>
+          <span class="cat-badge badge-design">Design</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Affiche Publicitaire — [Événement 2]</div>
+          <p class="card-desc">
+            Affiche promotionnelle pour une <em>campagne marketing</em> locale.
+            Composition visuelle forte, couleurs vives et message clair pour
+            attirer l'attention du public cible.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Canva</span>
+            <span class="ctag">Illustrator</span>
+            <span class="ctag">Print</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="design">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\Faire-part.png" alt="Dashboard Power BI - Commerce" />
+          </div>
+          <span class="cat-badge badge-design">Design</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Faire-Part </div>
+          <p class="card-desc">
+            Design de <em>faire-part élégant</em> pour un mariage, baptême
+            ou événement familial. Mise en page soignée, typographie raffinée
+            et cohérence visuelle pour un rendu haut de gamme.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Canva</span>
+            <span class="ctag">Figma</span>
+            <span class="ctag">Print</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="design">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\Conception faire-part.png" alt="Dashboard Power BI - Commerce" />
+                <span class="cat-badge badge-data">Data & BI</span>
+          </div>
+          <span class="cat-badge badge-design">Design</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Faire-Part </div>
+          <p class="card-desc">
+            Création d'un <em>faire-part personnalisé</em> avec une identité
+            visuelle unique. Choix typographiques subtils et illustrations
+            adaptées à l'occasion.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Canva</span>
+            <span class="ctag">Print</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="design">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\Etiquette1.png" alt="Dashboard Power BI - Commerce" />
+                <span class="cat-badge badge-data">Data & BI</span>
+          </div>
+          <span class="cat-badge badge-design">Design</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Étiquettes Bidons d'Eau </div>
+          <p class="card-desc">
+            Conception d'<em>étiquettes produit</em> pour bidons d'eau.
+            Design épuré, lisible et attractif qui inspire confiance et
+            se démarque en point de vente.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Illustrator</span>
+            <span class="ctag">Packaging</span>
+            <span class="ctag">Print</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="design">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\Etiquette2.png" alt="D" />
+          </div>
+          <span class="cat-badge badge-design">Design</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Étiquettes Produit — [Marque 2]</div>
+          <p class="card-desc">
+            Design d'étiquettes pour produits locaux. <em>Identité visuelle
+            forte</em> avec codes couleurs distinctifs et informations
+            produit clairement structurées.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Canva</span>
+            <span class="ctag">Packaging</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="design">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\kjhgfcd.jpeg" alt="Dashboard Power BI - Commerce" />
+          </div>
+          <span class="cat-badge badge-design">Design</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Flyer — [Événement / Promo]</div>
+          <p class="card-desc">
+            Création d'un <em>flyer promotionnel</em> pour diffusion digitale
+            et print. Composition visuelle dynamique adaptée aux réseaux sociaux
+            et à l'impression.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">Canva</span>
+            <span class="ctag">Photoshop</span>
+            <span class="ctag">Digital</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ═══════════ VIDÉO ═══════════ -->
+
+      <div class="project-card" data-cat="video">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\WhatsApp Image 2026-05-31 at 00.29.56.jpeg" alt="Dashboard Power BI - Commerce" />
+          </div>
+          <span class="cat-badge badge-video">Vidéo</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Montage Vidéo </div>
+          <p class="card-desc">
+            Production d'un contenu vidéo <em>percutant et professionnel</em>.
+            Travail sur le rythme, la narration visuelle et l'impact
+            émotionnel pour capter l'attention dès les premières secondes.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">CapCut</span>
+            <span class="ctag">Storytelling</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="video">
+        <div class="card-img">
+          <div class="card-img">
+              <img src="C:\Users\fortu\Fortu_portfolio\img\montage.png" alt="Dashboard Power BI - Commerce" />
+          </div>
+          <span class="cat-badge badge-video">Vidéo</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Montage Vidéo</div>
+          <p class="card-desc">
+            Création d'un contenu vidéo <em>court et impactant</em> pour
+            les plateformes digitales. Format optimisé pour TikTok, Instagram
+            Reels ou YouTube Shorts.
+          </p>
+          <div class="card-tags">
+            <span class="ctag">CapCut</span>
+            <span class="ctag">TikTok / Reels</span>
+            <span class="ctag">Motion</span>
+          </div>
+          <a href="#" class="card-cta">
+            Voir le projet <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="empty-msg" id="emptyMsg">
+        Aucun projet dans cette catégorie pour l'instant.
+      </div>
+
+    </div><!-- /projects-grid -->
+
+  </div><!-- /port-inner -->
+</section>
+
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════
+     SECTION CONTACT
+     ══════════════════════════ -->
+<section id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-inner">
+
+    <div class="section-label">
+      <span class="label-line"></span>
+      Contact
+    </div>
+
+    <h2 class="section-title">
+      Travaillons<br>
+      <span class="accent">ensemble</span>
+    </h2>
+    <p class="section-sub">
+      Un projet en data, web, design ou vidéo ? Je suis disponible pour
+      des missions freelance. Écrivez-moi, je réponds sous 24h.
+    </p>
+
+    <div class="contact-grid">
+
+      <!-- ── Infos de contact ── -->
+      <div class="contact-info">
+
+        <div class="info-card">
+          <div class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div class="info-content">
+            <span class="info-label">Email</span>
+            <a href="mailto:fredsossa08@gmail.com" class="info-value">
+              fredsossa08@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div class="info-content">
+            <span class="info-label">Téléphone</span>
+            <div class="info-value multi">
+              <a href="tel:+22901166220340" class="info-value">+229 0166 220 340</a>
+              <a href="tel:+2290192698 01" class="info-value">+229 0192 698 601</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="info-content">
+            <span class="info-label">Localisation</span>
+            <span class="info-value">Calavi, Bénin</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3.5 2 8.5 2 12 0v-5"/><path d="M22 10v6"/></svg></div>
+          <div class="info-content">
+            <span class="info-label">Formation actuelle</span>
+            <span class="info-value">Licence en ESA — FASEG, UAC Abomey-Calavi</span>
+          </div>
+        </div>
+
+        <div class="availability">
+          <span class="avail-dot"></span>
+          Disponible pour missions freelance
+        </div>
+
+      </div>
+
+      <!-- ── Formulaire ── -->
+      <div class="contact-form-wrap">
+        <div class="form-title">Envoyez-moi un message</div>
+        <div class="form-subtitle">Je vous répondrai dans les plus brefs délais.</div>
+
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/fredsossa08@gmail.com" method="POST" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fname">Prénom</label>
+              <input type="text" id="fname" name="prenom" class="form-input"
+                placeholder="Votre prénom" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lname">Nom</label>
+              <input type="text" id="lname" name="nom" class="form-input"
+                placeholder="Votre nom" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-input"
+              placeholder="votre@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="service">Service souhaité</label>
+            <select id="service" name="service" class="form-select form-input" required>
+              <option value="" disabled selected>Choisir un service...</option>
+              <option value="data">Analyse de données & BI</option>
+              <option value="web">Développement web</option>
+              <option value="design">Design graphique</option>
+              <option value="video">Montage vidéo</option>
+              <option value="autre">Autre / Combiné</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" name="message" class="form-textarea"
+              placeholder="Décrivez votre projet, vos besoins, votre budget..."
+              required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <span class="btn-label">Envoyer le message</span>
+            <span class="btn-arrow">→</span>
+          </button>
+
+          <div class="success-msg" id="successMsg">
+            Message envoyé ! Je vous réponds sous 24h.
+          </div>
+
+          <div class="error-msg" id="errorMsg">
+            Le message n'a pas pu être envoyé. Réessayez ou contactez-moi directement par email.
+          </div>
+
+        </form>
+      </div>
+
+    </div><!-- /contact-grid -->
+  </div><!-- /contact-inner -->
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════
+     FOOTER
+     ══════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+
+    <div class="footer-top">
+
+      <div>
+        <a href="#hero" class="footer-logo">BFF.</a>
+        <p class="footer-tagline">Data · Design · Digital</p>
+      </div>
+
+      <ul class="footer-nav">
+        <li><a href="#hero">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="social-links">
+        <!-- Remplace # par tes vrais liens -->
+        <a href="https://www.linkedin.com/in/fortuné-fred-sossa-380bab292" class="social-link" title="LinkedIn">in</a>
+        <a href="https://github.com/Fred-0313" class="social-link" title="GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
+          </svg>
+        </a>
+        <a href="mailto:fredsossa08@gmail.com" class="social-link" title="Email">@</a>
+        <a href="https://wa.me/2290166220340" class="social-link" title="WhatsApp" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.57 1.37 5.05L2 22l5.1-1.34A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.7 0-3.29-.46-4.65-1.26l-.33-.2-3.03.8.81-2.96-.21-.35A7.96 7.96 0 014 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2026 <span>SOSSA Bignon Fortuné Fred</span>. Tous droits réservés.
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card');
+  const emptyMsg = document.getElementById('emptyMsg');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      let visible = 0;
+      cards.forEach((card, i) => {
+        const show = filter === 'all' || card.dataset.cat === filter;
+        if (show) {
+          card.style.display = 'flex';
+          card.style.animationDelay = (visible * 0.07) + 's';
+          card.style.animation = 'none';
+          card.offsetHeight;
+          card.style.animation = 'fadeUp 0.4s ease both';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+    });
+  });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const btn = form.querySelector('.btn-submit');
+    const btnLabel = btn.querySelector('.btn-label') || btn;
+    const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
+
+    successMsg.style.display = 'none';
+    if (errorMsg) errorMsg.style.display = 'none';
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const originalLabel = btnLabel.textContent;
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.name = `${data.prenom || ''} ${data.nom || ''}`.trim();
+    data._replyto = data.email;
+
+    btnLabel.textContent = 'Envoi en cours...';
+    btn.style.opacity = '0.7';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) throw new Error("Erreur lors de l'envoi");
+
+      form.reset();
+      successMsg.style.display = 'block';
+      btnLabel.textContent = 'Message envoyé';
+    } catch (error) {
+      if (errorMsg) errorMsg.style.display = 'block';
+      btnLabel.textContent = originalLabel;
+    } finally {
+      btn.style.opacity = '1';
+      btn.disabled = false;
+    }
+  }
+
+
+
+  const slider = document.querySelector(".slides");
+  const images = document.querySelectorAll(".slides img");
+
+  let index = 0;
+
+  function nextSlide() {
+    index++;
+
+    if (index >= images.length) {
+      index = 0;
+    }
+
+    slider.style.transform = `translateX(${-index * 100}%)`;
+  }
+
+  setInterval(nextSlide, 3000);
+
+
+
+</script>
+</body>
+</html>
